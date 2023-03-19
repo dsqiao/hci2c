@@ -6,6 +6,7 @@ import {
   Link,
   RouterProvider,
 } from "react-router-dom";
+const { TextArea } = Input;
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "/prod",
     element: <Product />
+  },
+  {
+    path: "/prod/apply",
+    element: <ApplyPage />
   }
 ]);
 
@@ -74,7 +79,45 @@ function Home() {
 // 产品研究
 function Product() {
   return (
-    <div>产品研究</div>
+    <div style={{
+      backgroundImage: `url(${require('./img/bg.png')})`,
+      backgroundPosition: 'center',
+      height: '59vw',
+      width: '100vw',
+      objectFit: 'cover',
+      backgroundSize: 'cover',
+      display: 'flex',
+      flexDirection: 'column',
+      paddingInline: '18%',
+      boxSizing: 'border-box',
+    }}>
+      <div style={{
+        backgroundColor: 'rgb(240, 248, 222)',
+        height: '100%',
+      }}>
+        <img src={require('./img/library.jpeg')} style={{ width: '100%' }} />
+        <h1 style={{
+          borderLeft: 'solid 3px green',
+          paddingLeft: '10px',
+          marginLeft: '40px',
+          marginTop: '80px',
+        }}>产品研究</h1>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-evenly',
+          flexWrap: 'wrap',
+          padding: '40px 60px',
+        }}>
+          <Link to="apply">
+            <img src={require('./img/申请.jpeg')}></img>
+          </Link>
+          <img src={require('./img/预览.jpeg')}></img>
+          <img src={require('./img/记录.jpeg')}></img>
+          <img src={require('./img/报告.jpeg')}></img>
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -85,23 +128,31 @@ function ApplyPage() {
     setCurrentStep(e.key)
   }
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'row', padding: '0 200px', gap: '50px' }}>
       <Menu onClick={onClick} selectedKeys={[currentStep]} items={[
         { label: '基本信息', key: '1' },
         { label: '产品信息', key: '2' },
         { label: '测试任务', key: '3' },
         { label: '测评服务', key: '4' }
-      ]} />
-      {currentStep === '1' && <div>
-        <p>如果您想要对产品进行可用性测试，请在下列表格中填写相关信息，我们将会尽快联系您。</p>
-        <Form labelCol={{ span: 8 }} wrapperCol={{ span: 16 }}>
-          <Form.Item label="姓名"><Input /></Form.Item>
-          <Form.Item label="联系方式"><Input /></Form.Item>
-          <Form.Item label="公司名称"><Input /></Form.Item>
-          <Button>保存</Button>
-          <Button onClick={() => setCurrentStep('2')}>下一项</Button>
-        </Form>
-      </div>}
+      ]} style={{ flexBasis: '200px', flexShrink: 0 }} />
+      <div style={{ flexGrow: 1 }}>
+        {currentStep === '1' && <div>
+          <p>如果您想要对产品进行可用性测试，请在下列表格中填写相关信息，我们将会尽快联系您。</p>
+          <Form labelCol={{ span: 4 }} wrapperCol={{ span: 14 }}>
+            <Form.Item label="姓名"><Input /></Form.Item>
+            <Form.Item label="联系方式"><Input /></Form.Item>
+            <Form.Item label="公司名称"><Input /></Form.Item>
+            <Button>保存</Button>
+            <Button onClick={() => setCurrentStep('2')}>下一项</Button>
+          </Form>
+        </div>}
+        {currentStep === '2' && <div>
+          <p>如果您想要对产品进行可用性测试，请在下列表格中填写相关信息，我们将会尽快联系您。</p>
+          <Form labelCol={{ span: 4 }} wrapperCol={{ span: 14}}>
+            <Form.Item label="目标产品"><Input /></Form.Item>
+          </Form>
+        </div>}
+      </div>
     </div>
   )
 }
@@ -255,7 +306,23 @@ function TestPage() {
         {currentStep === '4' && <div>
           <p>请在下列输入框中输入您对相应题目的看法。若无法作答，则填写“无”。</p>
           <p>1.您会在未来使用/购买该产品吗？为什么？</p>
-          
+          <TextArea style={{ height: 120 }} />
+          <p>2.您将可能会在什么情况下使用该产品？/您认为该产品的使用目的是什么？</p>
+          <TextArea style={{ height: 120 }} />
+          <p>3.您认为该产品最好的方面是什么？为什么？</p>
+          <TextArea style={{ height: 120 }} />
+          <p>4.您认为该产品有哪些值得改进的地方？如何改进？</p>
+          <TextArea style={{ height: 120 }} />
+          <p>5.如果您在操作过程中还存在其他任何问题，请告诉我们：</p>
+          <TextArea style={{ height: 120 }} />
+          <Button onClick={() => setCurrentStep('5')}>下一项</Button>
+        </div>}
+        {/* 量表填写 */}
+        {currentStep === '5' && <div>
+          {/* 三张量表之间有怎样的逻辑关系？ */}
+          <div>通用可用性量表</div>
+          <div>网站分析和测量量表</div>
+          <div>软件可用性测量量表</div>
         </div>}
       </div>
     </div>
