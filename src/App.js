@@ -23,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/prod/apply",
     element: <ApplyPage />
+  },
+  {
+    path: "/login",
+    element: <Login />
   }
 ]);
 
@@ -148,7 +152,7 @@ function ApplyPage() {
         </div>}
         {currentStep === '2' && <div>
           <p>如果您想要对产品进行可用性测试，请在下列表格中填写相关信息，我们将会尽快联系您。</p>
-          <Form labelCol={{ span: 4 }} wrapperCol={{ span: 14}}>
+          <Form labelCol={{ span: 4 }} wrapperCol={{ span: 14 }}>
             <Form.Item label="目标产品"><Input /></Form.Item>
           </Form>
         </div>}
@@ -334,7 +338,7 @@ function App() {
       <div className='header'>
         <div className='nav'>EN</div>
         <div className='nav'>关于</div>
-        <div className='nav'>登陆</div>
+        <div className='nav'><a href='/login'>登陆</a></div>
         <div className='nav'>服务</div>
         <div className='nav'><a href="/">首页</a></div>
       </div>
@@ -342,6 +346,30 @@ function App() {
       <footer className='footer'></footer>
     </div>
   );
+}
+
+// 登陆页面
+function Login() {
+  return (
+    <div style={{
+      width: '100vw',
+      height: '59vw',
+      backgroundImage: `url(${require('./img/bg.png')})`,
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
+    }}>
+      <div style={{
+        position: 'relative',
+        left: '55vw',
+        right: '20vw',
+        top: '15vw',
+        width: '450px',
+        height: '400px',
+        backgroundColor: 'white',
+      }}></div>
+    </div>
+    
+  )
 }
 
 export default App;
