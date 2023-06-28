@@ -6,6 +6,7 @@ import {
   Link,
   RouterProvider,
 } from "react-router-dom";
+import Footer from './components/Footer.js'
 const { TextArea } = Input;
 const router = createBrowserRouter([
   {
@@ -343,7 +344,7 @@ function App() {
         <div className='nav'><a href="/">首页</a></div>
       </div>
       <RouterProvider router={router} />
-      <footer className='footer'></footer>
+      <Footer />
     </div>
   );
 }
