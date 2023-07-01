@@ -8,7 +8,7 @@ export default function Product() {
             backgroundImage: `url(${require('../img/bg.png')})`,
             backgroundPosition: 'center',
             height: '59vw',
-            width: '100vw',
+            width: '100%',
             objectFit: 'cover',
             backgroundSize: 'cover',
             display: 'flex',

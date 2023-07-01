@@ -1,6 +1,8 @@
 # HCI (To C)
 
-本仓库为社会学院一个大创项目的C端前端。([项目设计稿](https://modao.cc/app/fJZjEluirfxsobwaKlFpSa))
+本仓库为社会学院一个大创项目的C端前端。
+- [项目设计稿](https://modao.cc/app/fJZjEluirfxsobwaKlFpSa)
+- [注册、登陆体系](https://nanxiaobao.feishu.cn/docx/FKy9dRI9Zo5eecxBQencfPeBniV)
 
 
 本系统使用 Create React App 作为模版。
