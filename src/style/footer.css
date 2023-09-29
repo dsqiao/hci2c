@@ -1,18 +1,18 @@
 .footer {
-    background-color: #364d79;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+  background-color: #364d79;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .xiaohui {
-    width: 150px;
-    margin: 30px 80px;
+  width: 150px;
+  margin: 30px 80px;
 }
 
 .box {
-    margin-left: 100px;
-    color: white;
+  margin-left: 100px;
+  color: white;
 }

@@ -1,0 +1,5 @@
+{
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2, // 缩进为两个空格
+  "editor.detectIndentation": false, // 禁用自动检测文件的缩进设置
+}

@@ -3,29 +3,29 @@ import Home from '../page/Home';
 import ApplyPage from '../page/Apply';
 import TestPage from '../page/Test';
 import Product from '../page/Product';
-import { createBrowserRouter, createHashRouter } from 'react-router-dom'
+import { createHashRouter } from 'react-router-dom'
 
 const router = createHashRouter([
-    {
-        path: "/",
-        element: <Home />,
-    },
-    {
-        path: "/test",
-        element: <TestPage />
-    },
-    {
-        path: "/prod",
-        element: <Product />
-    },
-    {
-        path: "/prod/apply",
-        element: <ApplyPage />
-    },
-    {
-        path: "/login",
-        element: <Login />
-    }
+  {
+    path: "/",
+    element: <Home />,
+  },
+  {
+    path: "/test",
+    element: <TestPage />
+  },
+  {
+    path: "/prod",
+    element: <Product />
+  },
+  {
+    path: "/prod/apply",
+    element: <ApplyPage />
+  },
+  {
+    path: "/login",
+    element: <Login />
+  }
 ]);
 
 export default router;

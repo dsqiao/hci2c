@@ -45,7 +45,8 @@ export default function Login() {
               label="手机号"
               name="phone"
               rules={[{
-                required: true
+                required: true,
+                message: '请输入手机号',
               }]}>
               <Input />
             </Form.Item>
@@ -53,7 +54,8 @@ export default function Login() {
               label="密码"
               name="pwd"
               rules={[{
-                required: true
+                required: true,
+                message: '请输入密码',
               }]}
             >
               <Input.Password />
@@ -62,7 +64,7 @@ export default function Login() {
               wrapperCol={{ offset: 6, span: 16 }}
               style={{ color: "gray" }}
             >
-              没有账号？<a onClick={goSignUp}>立即注册</a>
+              没有账号？<div onClick={goSignUp}>立即注册</div>
             </Form.Item>
             <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
               <Button
@@ -93,7 +95,8 @@ export default function Login() {
               label="手机号"
               name="phone"
               rules={[{
-                required: true
+                required: true,
+                message: '请输入手机号'
               }]}>
               <Input />
             </Form.Item>
@@ -101,7 +104,8 @@ export default function Login() {
               label="密码"
               name="pwd"
               rules={[{
-                required: true
+                required: true,
+                message: '请输入密码',
               }]}
             >
               <Input.Password />
@@ -110,7 +114,8 @@ export default function Login() {
               label="确认密码"
               name="repwd"
               rules={[{
-                required: true
+                required: true,
+                message: '请再次输入密码',
               }]}
             >
               <Input.Password />
@@ -119,7 +124,7 @@ export default function Login() {
               wrapperCol={{ offset: 6, span: 16 }}
               style={{ color: "gray" }}
             >
-              已有账号，<a onClick={goLogIn}>点击登录</a>
+              已有账号，<div onClick={goLogIn}>点击登录</div>
             </Form.Item>
             <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
               <Button type="primary" htmlType="submit">
