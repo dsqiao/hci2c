@@ -1,6 +1,6 @@
 import Login from '../page/Login';
 import Home from '../page/Home';
-import ApplyPage from '../page/Apply';
+import ApplyPage from '../page/apply/Apply';
 import TestPage from '../page/Test';
 import Product from '../page/Product';
 import { createHashRouter } from 'react-router-dom'

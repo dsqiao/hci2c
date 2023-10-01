@@ -8,6 +8,7 @@ export default function Home() {
   const showModal = () => setIsLinkModalOpen(true)
   return (
     <div>
+      {/* 轮播图跑马灯 */}
       <Carousel autoplay>
         <img alt="用户体验" className='car-img' src={require('../img/用户体验.png')}></img>
         <img alt="用户痛点" className='car-img' src={require('../img/用户痛点.png')}></img>
@@ -17,10 +18,13 @@ export default function Home() {
       </Carousel>
       <h2 className='header-2'>服 务</h2>
       <div className='line-img-wrapper'>
+        {/* 跳转至「产品研究」页 */}
         <Link to="prod">
           <img alt="产品研究" src={require('../img/产品研究.png')} className='square-img'></img>
         </Link>
+        {/* 跳转至「用户研究」页，暂时没做 */}
         <img alt="用户研究" src={require('../img/用户研究.png')} className='square-img'></img>
+        {/* 跳转至「测试-跳转页面」 */}
         <img onClick={showModal} alt="测试链接" src={require('../img/测试链接.png')} className='square-img'></img>
       </div>
       <h2 className='header-2'>关 于</h2>

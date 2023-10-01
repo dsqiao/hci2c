@@ -1,0 +1,13 @@
+.checkbox-wrapper {
+  display: block;
+  width: fit-content;
+  margin: 15px 0;
+}
+
+.gray-text {
+  color: gray;
+}
+
+.sec-p {
+  margin-top: 80px;
+}
