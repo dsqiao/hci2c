@@ -85,8 +85,8 @@ export default function ApplyPage() {
           <div>
             <p>产品可用性测试：请根据您的产品类型，选择对应的可用性测试问卷<span className="gray-text">（将鼠标移动至问卷名称处，即可阅读相关简介，可多选）</span></p>
             {
-              testService1.map(element => (
-                <Tooltip placement="right" title={element.tooltip} >
+              testService1.map((element, index) => (
+                <Tooltip placement="right" title={element.tooltip} key={index}>
                   <span className="checkbox-wrapper">
                     <Checkbox>{element.checkbox}</Checkbox>
                   </span>
@@ -95,8 +95,8 @@ export default function ApplyPage() {
             }
             <p className="sec-p">维度针对性测试：如您还想了解，请选择<span className="gray-text">（将鼠标移动至问卷名称处，即可阅读相关简介，可多选）</span></p>
             {
-              testService2.map(element => (
-                <Tooltip placement="right" title={element.tooltip} >
+              testService2.map((element, index) => (
+                <Tooltip placement="right" title={element.tooltip} key={index}>
                   <span className="checkbox-wrapper">
                     <Checkbox>{element.checkbox}</Checkbox>
                   </span>

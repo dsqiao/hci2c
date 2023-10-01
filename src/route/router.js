@@ -1,6 +1,7 @@
 import Login from '../page/Login';
 import Home from '../page/Home';
 import ApplyPage from '../page/apply/Apply';
+import Record from '../page/record/Record';
 import TestPage from '../page/Test';
 import Product from '../page/Product';
 import { createHashRouter } from 'react-router-dom'
@@ -21,6 +22,10 @@ const router = createHashRouter([
   {
     path: "/prod/apply",
     element: <ApplyPage />
+  },
+  {
+    path: "/prod/record",
+    element: <Record />
   },
   {
     path: "/login",
