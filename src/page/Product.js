@@ -41,7 +41,9 @@ export default function Product() {
           <Link to="record">
             <img src={require('../img/记录.jpeg')} alt=""></img>
           </Link>
-          <img src={require('../img/报告.jpeg')} alt=""></img>
+          <Link to="report">
+            <img src={require('../img/报告.jpeg')} alt=""></img>
+          </Link>
         </div>
       </div>
     </div>
