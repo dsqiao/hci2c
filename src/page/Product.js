@@ -37,7 +37,9 @@ export default function Product() {
           <Link to="apply">
             <img src={require('../img/申请.jpeg')} alt=""></img>
           </Link>
-          <img src={require('../img/预览.jpeg')} alt=""></img>
+          <Link to="../test">
+            <img src={require('../img/预览.jpeg')} alt=""></img>
+          </Link>
           <Link to="record">
             <img src={require('../img/记录.jpeg')} alt=""></img>
           </Link>
