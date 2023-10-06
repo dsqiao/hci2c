@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Menu, Descriptions, Button, Input, message } from 'antd'
+import React, { useState, useContext, useEffect, useRef } from 'react'
+import { Menu, Descriptions, Button, Input, message, Table, Form, Popconfirm } from 'antd'
 import { useNavigate } from 'react-router-dom';
 import '../../style/record.css'
 export default function Record() {
@@ -8,6 +8,174 @@ export default function Record() {
   const onClick = (e) => {
     setCurrentStep(e.key)
   }
+  const EditableContext = React.createContext(null);
+  const EditableRow = ({ index, ...props }) => {
+    const [form] = Form.useForm();
+    return (
+      <Form form={form} component={false}>
+        <EditableContext.Provider value={form}>
+          <tr {...props} />
+        </EditableContext.Provider>
+      </Form>
+    );
+  };
+  const EditableCell = ({
+    title,
+    editable,
+    children,
+    dataIndex,
+    record,
+    handleSave,
+    ...restProps
+  }) => {
+    const [editing, setEditing] = useState(false);
+    const inputRef = useRef(null);
+    const form = useContext(EditableContext);
+    useEffect(() => {
+      if (editing) {
+        inputRef.current.focus();
+      }
+    }, [editing]);
+    const toggleEdit = () => {
+      setEditing(!editing);
+      form.setFieldsValue({
+        [dataIndex]: record[dataIndex],
+      });
+    };
+    const save = async () => {
+      try {
+        const values = await form.validateFields();
+        toggleEdit();
+        handleSave({
+          ...record,
+          ...values,
+        });
+      } catch (errInfo) {
+        console.log('Save failed:', errInfo);
+      }
+    };
+    let childNode = children;
+    if (editable) {
+      childNode = editing ? (
+        <Form.Item
+          style={{
+            margin: 0,
+          }}
+          name={dataIndex}
+          rules={[
+            {
+              required: true,
+              message: `${title} is required.`,
+            },
+          ]}
+        >
+          <Input ref={inputRef} onPressEnter={save} onBlur={save} />
+        </Form.Item>
+      ) : (
+        <div
+          className="editable-cell-value-wrap"
+          style={{
+            paddingRight: 24,
+          }}
+          onClick={toggleEdit}
+        >
+          {children}
+        </div>
+      );
+    }
+    return <td {...restProps}>{childNode}</td>;
+  };
+  const [dataSource, setDataSource] = useState([
+    {
+      key: '0',
+      question: '问题 0',
+      answer: '回答',
+      desc: '说明 0',
+    },
+    {
+      key: '1',
+      question: '使用场景 1',
+      answer: '任务名称',
+      desc: '任务描述 1',
+    },
+  ]);
+  const [count, setCount] = useState(2);
+  const handleDelete = (key) => {
+    const newData = dataSource.filter((item) => item.key !== key);
+    setDataSource(newData);
+  };
+  const defaultColumns = [
+    {
+      title: '编号',
+      dataIndex: 'key',
+    },
+    {
+      title: '问题',
+      dataIndex: 'question',
+      editable: true,
+    },
+    {
+      title: '回答',
+      dataIndex: 'answer',
+      editable: true,
+    },
+    {
+      title: '说明',
+      dataIndex: 'desc',
+      editable: true
+    },
+    {
+      title: '操作',
+      dataIndex: 'operation',
+      render: (_, record) =>
+        dataSource.length >= 1 ? (
+          <Popconfirm title="确认删除？" onConfirm={() => handleDelete(record.key)}>
+            <Button>删除</Button>
+          </Popconfirm>
+        ) : null,
+    },
+  ];
+  const handleAdd = () => {
+    const newData = {
+      key: count,
+      question: `问题 ${count}`,
+      answer: '回答',
+      desc: `说明 ${count}`,
+    };
+    setDataSource([...dataSource, newData]);
+    setCount(count + 1);
+  };
+  const handleSave = (row) => {
+    const newData = [...dataSource];
+    const index = newData.findIndex((item) => row.key === item.key);
+    const item = newData[index];
+    newData.splice(index, 1, {
+      ...item,
+      ...row,
+    });
+    setDataSource(newData);
+  };
+  const components = {
+    body: {
+      row: EditableRow,
+      cell: EditableCell,
+    },
+  };
+  const columns = defaultColumns.map((col) => {
+    if (!col.editable) {
+      return col;
+    }
+    return {
+      ...col,
+      onCell: (record) => ({
+        record,
+        editable: col.editable,
+        dataIndex: col.dataIndex,
+        title: col.title,
+        handleSave,
+      }),
+    };
+  });
   const labels = [
     '序号',
     '时间点',
@@ -83,6 +251,22 @@ export default function Record() {
           <div>
             {contextHolder}
             <h3>您可以在此记录测试过程中，对用户的提问以及用户的回答。</h3>
+            <Button
+              onClick={handleAdd}
+              type="primary"
+              style={{
+                marginBottom: 16,
+              }}
+            >
+              +
+            </Button>
+            <Table
+              components={components}
+              rowClassName={() => 'editable-row'}
+              bordered
+              dataSource={dataSource}
+              columns={columns}
+            />
             <Button type='primary' onClick={success}>提交</Button>
           </div>
         }
