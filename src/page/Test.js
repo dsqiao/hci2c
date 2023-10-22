@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input, Button, Menu, Checkbox, Radio, Select, Table, message } from 'antd';
+import { Form, Input, Button, Menu, Checkbox, Radio, Select, Table, message, Modal } from 'antd';
 const { TextArea } = Input;
 
 // 测试页面
@@ -20,8 +20,58 @@ export default function TestPage() {
     setSecondCity(value);
   };
   const [currentStep, setCurrentStep] = useState('1')
+  const [table1page, setTable1Page] = useState('1')
   const onClick = (e) => {
     setCurrentStep(e.key)
+  }
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const Rate = () => {
+    const [value, setValue] = useState()
+    return (
+      <div style={{
+        paddingInline: '50px',
+      }}>
+        <Radio.Group
+          onChange={(e) => {
+            setValue(e.target.value)
+          }}
+          value={value}
+          style={{
+            width: '70%',
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between'
+          }}
+        >
+          <Radio value={1}>1</Radio>
+          <Radio value={2}>2</Radio>
+          <Radio value={3}>3</Radio>
+          <Radio value={4}>4</Radio>
+          <Radio value={5}>5</Radio>
+          <Radio value={6}>6</Radio>
+          <Radio value={7}>7</Radio>
+        </Radio.Group>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          width: '80%',
+        }}>
+          <span>非常不同意</span>
+          <span>非常同意</span>
+        </div>
+      </div>
+    )
+  }
+  const Question = (props) => {
+    return (
+      <div style={{
+        marginTop: '30px',
+      }}>
+        <div>{props.q}</div>
+        <Rate />
+      </div>
+    )
   }
   return (
     <div style={{ display: 'flex', flexDirection: 'row', padding: '0 200px', gap: '50px' }}>
@@ -194,11 +244,83 @@ export default function TestPage() {
         }
         {/* 量表填写 */}
         {
-          currentStep === '5' && <div>
+          currentStep === '5' &&
+          <div>
             {/* 三张量表之间有怎样的逻辑关系？ */}
-            <div>通用可用性量表</div>
-            <div>网站分析和测量量表</div>
-            <div>软件可用性测量量表</div>
+            <h3>通用可用性量表</h3>
+            <div>请逐一评价下列关于之前使用该产品/系统的描述，并选择符合您感受的数字</div>
+            {
+              table1page === '1' &&
+              <div>
+                <Question q="1. 我认为该产品容易使用" />
+                <Question q="2. 该产品使用简单" />
+                <Question q="3. 该产品是为所有水平的用户所设计的" />
+                <Question q="4. 我认为我会需要技术人员的支持才能使用" />
+                <Question q="5. 在使用该产品的过程中，我没有发现不一致" />
+                <Question q="6. 无论何时，我在使用该产品时犯了错误，我都可以轻松、快速地恢复。" />
+                <Button onClick={() => setTable1Page('2')} style={{ marginTop: '30px' }}>下一页</Button>
+              </div>
+            }
+            {
+              table1page === '2' &&
+              <div>
+                <Question q="7. 每次我都可以成功使用该产品" />
+                <Question q="8. 对于我需要完成的事情，该产品需要的步骤尽可能的最少" />
+                <Question q="9. 这个产品是有用的" />
+                <Question q="10. 这个产品的功能可以满足我的需求" />
+                <Question q="11. 我相信这个产品能提高产出" />
+                <Question q="12. 我能够使用这个产品快速完成任务和场景" />
+                <div style={{ marginTop: '30px' }}>
+                  <Button onClick={() => setTable1Page('1')}>上一页</Button>
+                  <Button onClick={() => setTable1Page('3')} style={{ marginLeft: '30px' }}>下一页</Button>
+                </div>
+              </div>
+            }
+            {
+              table1page === '3' &&
+              <div>
+                <Question q="13. 我必须花很多时间来纠正这个产品的事情" />
+                <Question q="14. 这个产品使我的工作更有效" />
+                <Question q="15. 这个产品可以执行我期望它做的所有事情" />
+                <Question q="16. 使用时，这个产品节省了我的时间" />
+                <Question q="17. 我认为大部分人会很快学会使用这个产品" />
+                <Question q="18. 在我可以使用该产品之前，我需要学习很多东西" />
+                <div style={{ marginTop: '30px' }}>
+                  <Button onClick={() => { setTable1Page('2') }}>上一页</Button>
+                  <Button onClick={() => { setTable1Page('4') }} style={{ marginLeft: '30px' }}>下一页</Button>
+                </div>
+              </div>
+            }
+            {
+              table1page === '4' &&
+              <div>
+                <Question q="19. 学习使用这个产品很容易" />
+                <Question q="20. 我容易记住如何使用这个产品" />
+                <Question q="21. 很快我就可以熟练使用这个产品了" />
+                <Question q="22. 整体上，我对这个产品很满意" />
+                <Question q="23. 我会把这个产品推荐给朋友" />
+                <Question q="24. 我认为我会愿意经常使用此产品" />
+                <div style={{ marginTop: '30px' }}>
+                  <Button onClick={() => { setTable1Page('3') }}>上一页</Button>
+                  <Button onClick={() => { setTable1Page('5') }} style={{ marginLeft: '30px' }}>下一页</Button>
+                </div>
+              </div>
+            }
+            {
+              table1page === '5' &&
+              <div>
+                <Question q="25. 我觉得使用这个产品很舒服" />
+                <Question q="26. 这个产品使用起来令人愉悦" />
+                <div style={{ marginTop: '30px' }}>
+                  <Button onClick={() => { setTable1Page('4') }}>上一页</Button>
+                  <Button onClick={() => { setIsModalOpen(true) }} style={{ marginLeft: '30px' }}>提交</Button>
+                </div>
+                <Modal title="" open={isModalOpen} onCancel={() => { setIsModalOpen(false) }} onOk={() => { setIsModalOpen(false) }}>
+                  <p>全部测试环境到此结束</p>
+                  <p>再次感谢您抽出时间参与本次测试</p>
+                </Modal>
+              </div>
+            }
           </div>
         }
       </div>

@@ -6,11 +6,17 @@
 }
 
 .header {
-  width: 100%;
+  width: 100vw;
+  background-color: #364d79;
+  color: white;
   flex-basis: 80px;
   display: flex;
   flex-direction: row-reverse;
-  margin-left: -50px;
+}
+
+/* 覆盖默认样式 */
+a {
+  color: white;
 }
 
 .nav {
@@ -55,4 +61,8 @@
 
 .square-img {
   width: 300px;
+}
+
+.prod-link {
+  max-width: 25%;
 }

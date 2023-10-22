@@ -96,21 +96,8 @@ export default function ApplyPage() {
     }
     return <td {...restProps}>{childNode}</td>;
   };
-  const [dataSource, setDataSource] = useState([
-    {
-      key: '0',
-      scene: '使用场景 0',
-      name: '任务名称',
-      desc: '任务描述 0',
-    },
-    {
-      key: '1',
-      scene: '使用场景 1',
-      name: '任务名称',
-      desc: '任务描述 1',
-    },
-  ]);
-  const [count, setCount] = useState(2);
+  const [dataSource, setDataSource] = useState([]);
+  const [count, setCount] = useState(1);
   const handleDelete = (key) => {
     const newData = dataSource.filter((item) => item.key !== key);
     setDataSource(newData);
@@ -270,7 +257,7 @@ export default function ApplyPage() {
               dataSource={dataSource}
               columns={columns}
             />
-            <Button onClick={() => setCurrentStep('4')} type="primary">下一项</Button>
+            <Button onClick={() => setCurrentStep('4')} type="primary" style={{ marginTop: '30px' }}>下一项</Button>
           </div>
         }
         {

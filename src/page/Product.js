@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 export default function Product() {
   return (
     <div style={{
-      backgroundImage: `url(${require('../img/bg.png')})`,
       backgroundPosition: 'center',
       height: '59vw',
       width: '100%',
@@ -13,7 +12,7 @@ export default function Product() {
       backgroundSize: 'cover',
       display: 'flex',
       flexDirection: 'column',
-      paddingInline: '18%',
+      paddingInline: '15%',
       boxSizing: 'border-box',
     }}>
       <div style={{
@@ -32,18 +31,18 @@ export default function Product() {
           flexDirection: 'row',
           justifyContent: 'space-evenly',
           flexWrap: 'wrap',
-          padding: '40px 60px',
+          padding: '40px 0',
         }}>
-          <Link to="apply">
-            <img src={require('../img/申请.jpeg')} alt=""></img>
+          <Link to="apply" className='prod-link'>
+            <img src={require('../img/申请.jpeg')} alt="" ></img>
           </Link>
-          <Link to="../test">
+          <Link to="../test" className='prod-link'>
             <img src={require('../img/预览.jpeg')} alt=""></img>
           </Link>
-          <Link to="record">
+          <Link to="record" className='prod-link'>
             <img src={require('../img/记录.jpeg')} alt=""></img>
           </Link>
-          <Link to="report">
+          <Link to="report" className='prod-link'>
             <img src={require('../img/报告.jpeg')} alt=""></img>
           </Link>
         </div>
