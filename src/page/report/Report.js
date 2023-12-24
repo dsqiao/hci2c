@@ -1,13 +1,29 @@
 import React, { useEffect, useState } from "react";
 import { Menu, Descriptions, Button, Table } from "antd";
 import { Pie, Column, Liquid } from "@antv/g2plot";
+import { DatabaseOutlined, VideoCameraOutlined } from '@ant-design/icons'
 import "../../style/report.css";
 
 export default function Report() {
   const [currentStep, setCurrentStep] = useState("1");
+  const [resultPage, setResultPage] = useState(0);
   const onClick = (e) => {
     setCurrentStep(e.key);
   };
+  const [btn1Hover, setBtn1Hover] = useState(false);
+  const [btn2Hover, setBtn2Hover] = useState(false);
+  const handleOnBtn1MouseEnter = () => {
+    setBtn1Hover(true);
+  }
+  const handleOnBtn1MouseLeave = () => {
+    setBtn1Hover(false);
+  }
+  const handleOnBtn2MouseEnter = () => {
+    setBtn2Hover(true);
+  }
+  const handleOnBtn2MouseLeave = () => {
+    setBtn2Hover(false);
+  }
   const renderGender = () => {
     const data = [
       { type: "男性", value: 3 },
@@ -260,7 +276,7 @@ export default function Report() {
       style={{
         display: "flex",
         flexDirection: "row",
-        padding: "0 200px 100px 200px",
+        padding: "100px 200px 100px 200px",
         gap: "50px",
       }}
     >
@@ -394,7 +410,7 @@ export default function Report() {
             />
           </div>
         )}
-        {currentStep === "5" && (
+        {currentStep === "5" && resultPage === 0 && (
           <div>
             <h3>图表摘要</h3>
             <p>通用可用性量表：平均值</p>
@@ -411,15 +427,96 @@ export default function Report() {
               65.6 分。
             </p>
             <p>对于本量表，平均值的参考值为 60 分。</p>
-            <p>
+            <p style={{ fontWeight: 800 }}>
               这说明，测试用户在
-              易用性、易学性和界面质量等维度上认可您的产品，但认为您的产品在有效性和系统质量上存在不足。
+              <span style={{ color: 'blue' }}>易用性、易学性和界面质量</span>
+              等维度上认可您的产品，但认为您的产品在
+              <span style={{ color: 'blue' }}>有效性和系统质量</span>
+              上存在不足。
             </p>
-            <Button>
+            <Button onClick={() => setResultPage(1)}>
               下一页
             </Button>
           </div>
         )}
+        {currentStep === '5' && resultPage === 1 && (
+          <div>
+            <h3>项目分析</h3>
+            <h4>优势项目</h4>
+            <p>测试用户认为以下三个条目最优，这说明您的产品在下列方面做得很好。</p>
+            <ul>
+              <li>该产品的操作简单</li>
+              <li>我容易记住如何使用这个产品</li>
+              <li>系统对于用户所输入信息的呈现是非常清楚的</li>
+            </ul>
+
+            <h4>劣势项目</h4>
+            <p>测试用户认为以下三个条目最差，说明您应该对此采取行动以改进您的产品</p>
+            <ul>
+              <li>这个产品的功能可以满足我的需求。</li>
+              <li>这个产品使我的工作更高效</li>
+              <li>我认为系统存在太多不一致之处</li>
+            </ul>
+            <Button onClick={() => setResultPage(0)}>
+              上一页
+            </Button>
+            <Button
+              type="primary"
+              onClick={() => setResultPage(2)}
+              style={{ marginLeft: '30px' }}
+            >
+              下一页
+            </Button>
+          </div>
+        )}
+        {
+          currentStep === '5' && resultPage === 2 &&
+          (
+            <div>
+              <h3>用户记录</h3>
+              <p>如果您希望针对每一名参与者进行更细致的分析</p>
+              <p>请点击以下按钮下载数据文件（.csv）与任务录像（.mp4）</p>
+              <Button
+                type="primary"
+                style={{ marginTop: '30px' }}
+                icon={<DatabaseOutlined />}
+              />
+              <span style={{ marginLeft: '20px' }}>
+                <span
+                  style={{
+                    textDecoration: 'underline',
+                    color: 'blue',
+                    cursor: btn1Hover ? 'pointer' : 'default'
+                  }}
+                  onMouseEnter={handleOnBtn1MouseEnter}
+                  onMouseLeave={handleOnBtn1MouseLeave}
+                >
+                  点击此处
+                </span>
+                下载参与者的数据文件
+              </span>
+              <br />
+              <Button
+                type="primary"
+                style={{ marginTop: '30px' }}
+                icon={<VideoCameraOutlined />} />
+              <span style={{ marginLeft: '20px' }}>
+                <span
+                  style={{
+                    textDecoration: 'underline',
+                    color: 'blue',
+                    cursor: btn2Hover ? 'pointer' : 'default',
+                  }}
+                  onMouseEnter={handleOnBtn2MouseEnter}
+                  onMouseLeave={handleOnBtn2MouseLeave}
+                >
+                  点击此处
+                </span>
+                下载参与者的任务录像
+              </span>
+            </div>
+          )
+        }
       </div>
     </div>
   );
