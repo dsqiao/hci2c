@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import { Input, Form, Button } from "antd";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css'
 
 // 登陆页面
 export default function Login() {
   const [isLogIn, setIsLogIn] = useState(true);
-  const navigate = useNavigate();
   const goLogIn = () => {
     setIsLogIn(true);
   };
+
+  const phone = window.localStorage.getItem('phone') || ''
+
   const register = (values) => {
     const pwd = values.pwd;
     const repwd = values.repwd;
@@ -22,8 +23,16 @@ export default function Login() {
         hideProgressBar: true,
       })
     } else {
+      toast.success('注册成功，为您跳转至登录页面', {
+        position: 'top-center',
+        autoClose: 2000,
+        hideProgressBar: true,
+      })
       window.localStorage.setItem('username', values.username);
-      navigate('/')
+      window.localStorage.setItem('phone', values.phone)
+      setTimeout(() => {
+        setIsLogIn(true)
+      }, 2000)
     }
   }
   const goSignUp = () => {
@@ -57,7 +66,13 @@ export default function Login() {
         }}
       >
         {isLogIn && (
-          <Form labelCol={{ span: 6 }} wrapperCol={{ span: 17 }}>
+          <Form
+            labelCol={{ span: 6 }}
+            wrapperCol={{ span: 17 }}
+            initialValues={{
+              phone,
+            }}
+          >
             <Form.Item
               label="手机号"
               name="phone"

@@ -279,10 +279,20 @@ export default function Report() {
       <div style={{ flexGrow: 1 }}>
         {currentStep === "1" && (
           <div>
-            <Descriptions title="某APP可用性测试项目" bordered column={1}>
-              <Descriptions.Item label="企业名称">某科技公司</Descriptions.Item>
-              <Descriptions.Item label="测试产品">某APP</Descriptions.Item>
-              <Descriptions.Item label="版本/型号">A211</Descriptions.Item>
+            <Descriptions
+              title="某APP可用性测试项目"
+              bordered
+              column={1}
+            >
+              <Descriptions.Item label="企业名称">
+                某科技公司
+              </Descriptions.Item>
+              <Descriptions.Item label="测试产品">
+                某APP
+              </Descriptions.Item>
+              <Descriptions.Item label="版本/型号">
+                A211
+              </Descriptions.Item>
               <Descriptions.Item label="测试内容">
                 <p>APP高保真原型测试，用户需要自行探索完成2个指定任务</p>
                 <p>任务1: 浏览首页</p>
@@ -291,10 +301,15 @@ export default function Report() {
               <Descriptions.Item label="测试周期">
                 2023/09/12 - 2023/09/25
               </Descriptions.Item>
-              <Descriptions.Item label="测试用户">5人</Descriptions.Item>
+              <Descriptions.Item label="测试用户">
+                5人
+              </Descriptions.Item>
             </Descriptions>
             <div style={{ height: "30px" }} />
-            <Button type="primary" onClick={() => setCurrentStep("2")}>
+            <Button
+              type="primary"
+              onClick={() => setCurrentStep("2")}
+            >
               下一项
             </Button>
           </div>
@@ -305,9 +320,13 @@ export default function Report() {
             <h3>基本信息</h3>
             <h4>性别比例</h4>
             <div id="gender"></div>
-            <h4 style={{ marginTop: "150px" }}>年龄分布</h4>
+            <h4 style={{ marginTop: "150px" }}>
+              年龄分布
+            </h4>
             <div id="age" />
-            <h3 style={{ marginTop: "150px" }}>产品使用</h3>
+            <h3 style={{ marginTop: "150px" }}>
+              产品使用
+            </h3>
             <p>使用经验</p>
             <p>是否使用过该产品？</p>
           </div>
@@ -316,22 +335,30 @@ export default function Report() {
           <div>
             <h3>工作指标</h3>
             <h4>任务完成率</h4>
-            <p style={{ color: "grey" }}>任务完成率 = 完成任务的人数/总人数</p>
+            <p style={{ color: "grey" }}>
+              任务完成率 = 完成任务的人数/总人数
+            </p>
             <div style={{ flexDirection: "row", display: "flex" }}>
               <div style={{ flexBasis: "300px" }}>
                 <div id="task1" />
-                <p style={{ textAlign: "center" }}>Task1</p>
+                <p style={{ textAlign: "center" }}>
+                  Task1
+                </p>
               </div>
               <div style={{ flexBasis: "300px" }}>
                 <div id="task2" />
-                <p style={{ textAlign: "center" }}>Task2</p>
+                <p style={{ textAlign: "center" }}>
+                  Task2
+                </p>
               </div>
             </div>
             <h4>任务完成时间</h4>
             <p>
               平均完成时间最短的任务为 Task1，平均完成时间最长的任务为 Task2.
             </p>
-            <p>任务完成总体平均时间为 298.5 秒。</p>
+            <p>
+              任务完成总体平均时间为 298.5 秒。
+            </p>
           </div>
         )}
         {currentStep === "4" && (
@@ -339,20 +366,32 @@ export default function Report() {
             <p className="feedback-p">
               1. 您会在未来使用/购买该产品吗？为什么？
             </p>
-            <Table columns={columns} dataSource={[]} />
+            <Table
+              columns={columns}
+              dataSource={[]}
+            />
             <p className="feedback-p">
               2.
               您将可能会在什么情况下使用该产品？您认为该产品的使用目的是什么？
             </p>
-            <Table columns={columns} dataSource={[]} />
+            <Table
+              columns={columns}
+              dataSource={[]}
+            />
             <p className="feedback-p">
               3. 您认为该产品最好的方面是什么？为什么？
             </p>
-            <Table columns={columns} dataSource={[]} />
+            <Table
+              columns={columns}
+              dataSource={[]}
+            />
             <p className="feedback-p">
               4. 如果您在操作过程中还存在其他任何问题，请告诉我们：
             </p>
-            <Table columns={columns} dataSource={[]} />
+            <Table
+              columns={columns}
+              dataSource={[]}
+            />
           </div>
         )}
         {currentStep === "5" && (
@@ -376,7 +415,9 @@ export default function Report() {
               这说明，测试用户在
               易用性、易学性和界面质量等维度上认可您的产品，但认为您的产品在有效性和系统质量上存在不足。
             </p>
-            <Button>下一页</Button>
+            <Button>
+              下一页
+            </Button>
           </div>
         )}
       </div>

@@ -47,17 +47,29 @@ export default function Product() {
             padding: "40px 0",
           }}
         >
-          <Link to="apply" className="prod-link">
-            <img src={require("../img/申请.jpeg")} alt=""></img>
+          <Link
+            to="apply"
+            className="prod-link"
+          >
+            <img src={require("../img/申请.jpeg")} alt="申请"></img>
           </Link>
-          <Link to="../test" className="prod-link">
-            <img src={require("../img/预览.jpeg")} alt=""></img>
+          <Link
+            to="../test"
+            className="prod-link"
+          >
+            <img src={require("../img/预览.jpeg")} alt="预览"></img>
           </Link>
-          <Link to="record" className="prod-link">
-            <img src={require("../img/记录.jpeg")} alt=""></img>
+          <Link
+            to="record"
+            className="prod-link"
+          >
+            <img src={require("../img/记录.jpeg")} alt="记录"></img>
           </Link>
-          <Link to="report" className="prod-link">
-            <img src={require("../img/报告.jpeg")} alt=""></img>
+          <Link
+            to="report"
+            className="prod-link"
+          >
+            <img src={require("../img/报告.jpeg")} alt="报告"></img>
           </Link>
         </div>
       </div>

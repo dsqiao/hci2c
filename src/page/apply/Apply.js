@@ -33,7 +33,10 @@ export default function ApplyPage() {
   const EditableRow = ({ index, ...props }) => {
     const [form] = Form.useForm();
     return (
-      <Form form={form} component={false}>
+      <Form
+        form={form}
+        component={false}
+      >
         <EditableContext.Provider value={form}>
           <tr {...props} />
         </EditableContext.Provider>
@@ -90,7 +93,11 @@ export default function ApplyPage() {
             },
           ]}
         >
-          <Input ref={inputRef} onPressEnter={save} onBlur={save} />
+          <Input
+            ref={inputRef}
+            onPressEnter={save}
+            onBlur={save}
+          />
         </Form.Item>
       ) : (
         <div
@@ -216,7 +223,10 @@ export default function ApplyPage() {
               如果您想要对产品进行可用性测试，请在下列表格中填写相关信息，我们将会尽快联系您。
             </p>
             <br />
-            <Form labelCol={{ span: 4 }} wrapperCol={{ span: 14 }}>
+            <Form
+              labelCol={{ span: 4 }}
+              wrapperCol={{ span: 14 }}
+            >
               <Form.Item label="姓名">
                 <Input />
               </Form.Item>
@@ -251,7 +261,10 @@ export default function ApplyPage() {
               如果您想要对产品进行可用性测试，请在下列表格中填写相关信息，我们将会尽快联系您。
             </p>
             <br />
-            <Form labelCol={{ span: 4 }} wrapperCol={{ span: 14 }}>
+            <Form
+              labelCol={{ span: 4 }}
+              wrapperCol={{ span: 14 }}
+            >
               <Form.Item label="目标产品">
                 <Input />
               </Form.Item>
@@ -333,7 +346,11 @@ export default function ApplyPage() {
               </span>
             </p>
             {testService1.map((element, index) => (
-              <Tooltip placement="right" title={element.tooltip} key={index}>
+              <Tooltip
+                placement="right"
+                title={element.tooltip}
+                key={index}
+              >
                 <span className="checkbox-wrapper">
                   <Checkbox>{element.checkbox}</Checkbox>
                 </span>
@@ -346,7 +363,10 @@ export default function ApplyPage() {
               </span>
             </p>
             {testService2.map((element, index) => (
-              <Tooltip placement="right" title={element.tooltip} key={index}>
+              <Tooltip
+                placement="right"
+                title={element.tooltip}
+                key={index}>
                 <span className="checkbox-wrapper">
                   <Checkbox>{element.checkbox}</Checkbox>
                 </span>

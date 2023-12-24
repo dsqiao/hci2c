@@ -21,7 +21,10 @@ export default function Record() {
   const EditableRow = ({ index, ...props }) => {
     const [form] = Form.useForm();
     return (
-      <Form form={form} component={false}>
+      <Form
+        form={form}
+        component={false}
+      >
         <EditableContext.Provider value={form}>
           <tr {...props} />
         </EditableContext.Provider>
@@ -78,7 +81,11 @@ export default function Record() {
             },
           ]}
         >
-          <Input ref={inputRef} onPressEnter={save} onBlur={save} />
+          <Input
+            ref={inputRef}
+            onPressEnter={save}
+            onBlur={save}
+          />
         </Form.Item>
       ) : (
         <div
@@ -272,7 +279,11 @@ export default function Record() {
               <p>1级：影响产品细节体验，优先级低</p>
               <p>2级：影响产品相关功能使用或用户体验不佳，优先级高</p>
               <p>3级：严重影响产品主要功能使用或用户体验较差，必须解决</p>
-              <Descriptions column={1} bordered labelStyle={{ width: "200px" }}>
+              <Descriptions
+                column={1}
+                bordered
+                labelStyle={{ width: "200px" }}
+              >
                 {labels.map((ele, index) => (
                   <Descriptions.Item label={ele} key={index}>
                     <Input style={{ border: "none" }} />
@@ -280,7 +291,10 @@ export default function Record() {
                 ))}
               </Descriptions>
               <div style={{ height: "40px" }}></div>
-              <Button type="primary" onClick={() => setCurrentStep("3")}>
+              <Button
+                type="primary"
+                onClick={() => setCurrentStep("3")}
+              >
                 提交
               </Button>
             </div>
