@@ -23,8 +23,9 @@ a {
   line-height: 80px;
   font-weight: 300;
   font-size: 20px;
-  flex-basis: 70px;
+  width: fit-content;
   text-align: center;
+  margin: 0 15px;
 }
 
 .car-img {

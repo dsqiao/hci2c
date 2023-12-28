@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Input, Form, Button } from "antd";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -10,12 +10,21 @@ export default function Login() {
   const goLogIn = () => {
     setIsLogIn(true);
   };
+  const navigate = useNavigate()
 
   const phone = window.localStorage.getItem('phone') || ''
 
   const register = (values) => {
     const pwd = values.pwd;
     const repwd = values.repwd;
+    const username = values.username
+    if (username.length > 8) {
+      toast.fail('用户名长度过长，仅支持8未字符以内', {
+        position: 'top-center',
+        autoClose: 2000,
+        hideProgressBar: true,
+      })
+    }
     if (pwd !== repwd) {
       toast.warn("两次密码输入不一致", {
         position: "top-center",
@@ -30,15 +39,26 @@ export default function Login() {
       })
       window.localStorage.setItem('username', values.username);
       window.localStorage.setItem('phone', values.phone)
+      window.localStorage.setItem('isLogin', '1')
       setTimeout(() => {
         setIsLogIn(true)
       }, 2000)
     }
   }
+  const login = (values) => {
+    const pwd = values.pwd;
+    const phone = values.phone;
+    if (phone.length === 11 && phone.startsWith('1')) {
+      window.localStorage.setItem('isLogin', '1')
+    }
+    navigate('/')
+    setTimeout(() => {
+      setIsLogIn(true)
+    })
+  }
   const goSignUp = () => {
     setIsLogIn(false);
   };
-  const handleLoginClick = () => { };
   return (
     <div
       style={{
@@ -72,6 +92,7 @@ export default function Login() {
             initialValues={{
               phone,
             }}
+            onFinish={login}
           >
             <Form.Item
               label="手机号"
@@ -113,12 +134,8 @@ export default function Login() {
               </div>
             </Form.Item>
             <Form.Item wrapperCol={{ offset: 6, span: 16 }}>
-              <Button
-                type="primary"
-                htmlType="submit"
-                onClick={handleLoginClick}
-              >
-                <Link to="/">登录</Link>
+              <Button type="primary" htmlType="submit">
+                登录
               </Button>
             </Form.Item>
           </Form>
