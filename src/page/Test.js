@@ -140,22 +140,29 @@ export default function TestPage() {
           <div>
             <p>您好，很高兴邀请您参与本次调研。</p>
             <p>
-              我们希望通过本次调研，了解您在平常使用___时的真实情况，以便更好地优化相关___。因此，请您在调研过程中尽可能地表达和分享自己的实际想法和感受。
+              我们希望通过本次调研，了解您在平常使用___时的真实情况，以便更好地优化相关___。
+              因此，请您在调研过程中尽可能地表达和分享自己的实际想法和感受。
             </p>
             <p>
-              本次调研的结果可能会用于企业研究，或者在学术期刊/书籍上发表。但是您的名字或者其他可以确认您的信息将不会在任何报告或者发表的材料中出现，除非得到您的允许。
+              本次调研的结果可能会用于企业研究，或者在学术期刊/书籍上发表。
+              但是您的名字或者其他可以确认您的信息将不会在任何报告或者发表的材料中出现，除非得到您的允许。
             </p>
             <p>
               针对本次调研，我们将在您同意并授权的前提下进行录制，以便后续的整理总结，希望您可以接受。
             </p>
-            <Form labelCol={{ span: 8 }} wrapperCol={{ span: 16 }}>
+            <Form
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 16 }}
+            >
               <Form.Item>
                 <Checkbox>需要相机权限，请允许访问您的相机。</Checkbox>
               </Form.Item>
               <Form.Item>
                 <Checkbox>需要麦克风权限，请允许访问您的麦克风。</Checkbox>
               </Form.Item>
-              <Button onClick={() => setCurrentStep("2")}>下一项</Button>
+              <Button onClick={() => setCurrentStep("2")}>
+                下一项
+              </Button>
             </Form>
           </div>
         )}
@@ -335,7 +342,9 @@ export default function TestPage() {
               dataSource={null}
             />
             <div style={{ marginTop: "30px" }}>
-              <Button>下一个</Button>
+              <Button>
+                下一个
+              </Button>
               <Button
                 onClick={() => {
                   messageApi.success("恭喜您完成所有任务");
@@ -357,17 +366,25 @@ export default function TestPage() {
             <p>
               请在下列输入框中输入您对相应题目的看法。若无法作答，则填写“无”。
             </p>
-            <p>1.您会在未来使用/购买该产品吗？为什么？</p>
+            <p>
+              1.您会在未来使用/购买该产品吗？为什么？
+            </p>
             <TextArea style={{ height: 120 }} />
             <p>
               2.您将可能会在什么情况下使用该产品？/您认为该产品的使用目的是什么？
             </p>
             <TextArea style={{ height: 120 }} />
-            <p>3.您认为该产品最好的方面是什么？为什么？</p>
+            <p>
+              3.您认为该产品最好的方面是什么？为什么？
+            </p>
             <TextArea style={{ height: 120 }} />
-            <p>4.您认为该产品有哪些值得改进的地方？如何改进？</p>
+            <p>
+              4.您认为该产品有哪些值得改进的地方？如何改进？
+            </p>
             <TextArea style={{ height: 120 }} />
-            <p>5.如果您在操作过程中还存在其他任何问题，请告诉我们：</p>
+            <p>
+              5.如果您在操作过程中还存在其他任何问题，请告诉我们：
+            </p>
             <TextArea style={{ height: 120 }} />
             <Button
               onClick={() => setCurrentStep("5")}
@@ -380,136 +397,145 @@ export default function TestPage() {
         {/* 量表填写 */}
         {currentStep === "5" && (
           <div>
-            {/* 三张量表之间有怎样的逻辑关系？ */}
             <h3>通用可用性量表</h3>
             <div>
               请逐一评价下列关于之前使用该产品/系统的描述，并选择符合您感受的数字
             </div>
-            {table1page === "1" && (
-              <div>
-                <Question q="1. 我认为该产品容易使用" />
-                <Question q="2. 该产品使用简单" />
-                <Question q="3. 该产品是为所有水平的用户所设计的" />
-                <Question q="4. 我认为我会需要技术人员的支持才能使用" />
-                <Question q="5. 在使用该产品的过程中，我没有发现不一致" />
-                <Question q="6. 无论何时，我在使用该产品时犯了错误，我都可以轻松、快速地恢复。" />
-                <Button
-                  onClick={() => setTable1Page("2")}
-                  style={{ marginTop: "30px" }}
-                >
-                  下一页
-                </Button>
-              </div>
-            )}
-            {table1page === "2" && (
-              <div>
-                <Question q="7. 每次我都可以成功使用该产品" />
-                <Question q="8. 对于我需要完成的事情，该产品需要的步骤尽可能的最少" />
-                <Question q="9. 这个产品是有用的" />
-                <Question q="10. 这个产品的功能可以满足我的需求" />
-                <Question q="11. 我相信这个产品能提高产出" />
-                <Question q="12. 我能够使用这个产品快速完成任务和场景" />
-                <div style={{ marginTop: "30px" }}>
-                  <Button onClick={() => setTable1Page("1")}>上一页</Button>
+            {
+              table1page === "1" && (
+                <div>
+                  <Question q="1. 我认为该产品容易使用" />
+                  <Question q="2. 该产品使用简单" />
+                  <Question q="3. 该产品是为所有水平的用户所设计的" />
+                  <Question q="4. 我认为我会需要技术人员的支持才能使用" />
+                  <Question q="5. 在使用该产品的过程中，我没有发现不一致" />
+                  <Question q="6. 无论何时，我在使用该产品时犯了错误，我都可以轻松、快速地恢复。" />
                   <Button
-                    onClick={() => setTable1Page("3")}
-                    style={{ marginLeft: "30px" }}
+                    onClick={() => setTable1Page("2")}
+                    style={{ marginTop: "30px" }}
                   >
                     下一页
                   </Button>
                 </div>
-              </div>
-            )}
-            {table1page === "3" && (
-              <div>
-                <Question q="13. 我必须花很多时间来纠正这个产品的事情" />
-                <Question q="14. 这个产品使我的工作更有效" />
-                <Question q="15. 这个产品可以执行我期望它做的所有事情" />
-                <Question q="16. 使用时，这个产品节省了我的时间" />
-                <Question q="17. 我认为大部分人会很快学会使用这个产品" />
-                <Question q="18. 在我可以使用该产品之前，我需要学习很多东西" />
-                <div style={{ marginTop: "30px" }}>
-                  <Button
-                    onClick={() => {
-                      setTable1Page("2");
-                    }}
-                  >
-                    上一页
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      setTable1Page("4");
-                    }}
-                    style={{ marginLeft: "30px" }}
-                  >
-                    下一页
-                  </Button>
+              )
+            }
+            {
+              table1page === "2" && (
+                <div>
+                  <Question q="7. 每次我都可以成功使用该产品" />
+                  <Question q="8. 对于我需要完成的事情，该产品需要的步骤尽可能的最少" />
+                  <Question q="9. 这个产品是有用的" />
+                  <Question q="10. 这个产品的功能可以满足我的需求" />
+                  <Question q="11. 我相信这个产品能提高产出" />
+                  <Question q="12. 我能够使用这个产品快速完成任务和场景" />
+                  <div style={{ marginTop: "30px" }}>
+                    <Button onClick={() => setTable1Page("1")}>上一页</Button>
+                    <Button
+                      onClick={() => setTable1Page("3")}
+                      style={{ marginLeft: "30px" }}
+                    >
+                      下一页
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            )}
-            {table1page === "4" && (
-              <div>
-                <Question q="19. 学习使用这个产品很容易" />
-                <Question q="20. 我容易记住如何使用这个产品" />
-                <Question q="21. 很快我就可以熟练使用这个产品了" />
-                <Question q="22. 整体上，我对这个产品很满意" />
-                <Question q="23. 我会把这个产品推荐给朋友" />
-                <Question q="24. 我认为我会愿意经常使用此产品" />
-                <div style={{ marginTop: "30px" }}>
-                  <Button
-                    onClick={() => {
-                      setTable1Page("3");
-                    }}
-                  >
-                    上一页
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      setTable1Page("5");
-                    }}
-                    style={{ marginLeft: "30px" }}
-                  >
-                    下一页
-                  </Button>
+              )
+            }
+            {
+              table1page === "3" && (
+                <div>
+                  <Question q="13. 我必须花很多时间来纠正这个产品的事情" />
+                  <Question q="14. 这个产品使我的工作更有效" />
+                  <Question q="15. 这个产品可以执行我期望它做的所有事情" />
+                  <Question q="16. 使用时，这个产品节省了我的时间" />
+                  <Question q="17. 我认为大部分人会很快学会使用这个产品" />
+                  <Question q="18. 在我可以使用该产品之前，我需要学习很多东西" />
+                  <div style={{ marginTop: "30px" }}>
+                    <Button
+                      onClick={() => {
+                        setTable1Page("2");
+                      }}
+                    >
+                      上一页
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        setTable1Page("4");
+                      }}
+                      style={{ marginLeft: "30px" }}
+                    >
+                      下一页
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            )}
-            {table1page === "5" && (
-              <div>
-                <Question q="25. 我觉得使用这个产品很舒服" />
-                <Question q="26. 这个产品使用起来令人愉悦" />
-                <div style={{ marginTop: "30px" }}>
-                  <Button
-                    onClick={() => {
-                      setTable1Page("4");
-                    }}
-                  >
-                    上一页
-                  </Button>
-                  <Button
-                    onClick={() => {
-                      setIsModalOpen(true);
-                    }}
-                    style={{ marginLeft: "30px" }}
-                  >
-                    提交
-                  </Button>
+              )
+            }
+            {
+              table1page === "4" && (
+                <div>
+                  <Question q="19. 学习使用这个产品很容易" />
+                  <Question q="20. 我容易记住如何使用这个产品" />
+                  <Question q="21. 很快我就可以熟练使用这个产品了" />
+                  <Question q="22. 整体上，我对这个产品很满意" />
+                  <Question q="23. 我会把这个产品推荐给朋友" />
+                  <Question q="24. 我认为我会愿意经常使用此产品" />
+                  <div style={{ marginTop: "30px" }}>
+                    <Button
+                      onClick={() => {
+                        setTable1Page("3");
+                      }}
+                    >
+                      上一页
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        setTable1Page("5");
+                      }}
+                      style={{ marginLeft: "30px" }}
+                    >
+                      下一页
+                    </Button>
+                  </div>
                 </div>
-                <Modal
-                  title=""
-                  open={isModalOpen}
-                  onCancel={() => {
-                    setIsModalOpen(false);
-                  }}
-                  onOk={() => {
-                    setIsModalOpen(false);
-                  }}
-                >
-                  <p>全部测试环境到此结束</p>
-                  <p>再次感谢您抽出时间参与本次测试</p>
-                </Modal>
-              </div>
-            )}
+              )
+            }
+            {
+              table1page === "5" && (
+                <div>
+                  <Question q="25. 我觉得使用这个产品很舒服" />
+                  <Question q="26. 这个产品使用起来令人愉悦" />
+                  <div style={{ marginTop: "30px" }}>
+                    <Button
+                      onClick={() => {
+                        setTable1Page("4");
+                      }}
+                    >
+                      上一页
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        setIsModalOpen(true);
+                      }}
+                      style={{ marginLeft: "30px" }}
+                    >
+                      提交
+                    </Button>
+                  </div>
+                  <Modal
+                    title=""
+                    open={isModalOpen}
+                    onCancel={() => {
+                      setIsModalOpen(false);
+                    }}
+                    onOk={() => {
+                      setIsModalOpen(false);
+                    }}
+                  >
+                    <p>全部测试环境到此结束</p>
+                    <p>再次感谢您抽出时间参与本次测试</p>
+                  </Modal>
+                </div>
+              )
+            }
           </div>
         )}
       </div>
