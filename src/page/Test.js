@@ -10,7 +10,9 @@ import {
   Table,
   message,
   Modal,
+  FloatButton,
 } from "antd";
+import { FormOutlined } from '@ant-design/icons';
 const { TextArea } = Input;
 
 // 测试页面
@@ -104,6 +106,8 @@ export default function TestPage() {
       </div>
     );
   };
+
+  const [showComment, setShowComment] = useState(false);
   return (
     <div
       style={{
@@ -125,7 +129,13 @@ export default function TestPage() {
         ]}
         style={{ flexBasis: "200px", flexShrink: 0 }}
       />
-      <div style={{ flexGrow: 1, flexBasis: "80vh", paddingBottom: "80px" }}>
+      <div style={{
+        flexGrow: 1,
+        flexBasis: "80vh",
+        paddingBottom: "80px",
+        position: 'relative',
+      }}>
+        {/* 测试与权限 */}
         {currentStep === "1" && (
           <div>
             <p>您好，很高兴邀请您参与本次调研。</p>
@@ -149,10 +159,14 @@ export default function TestPage() {
             </Form>
           </div>
         )}
+        {/* 用户画像 */}
         {currentStep === "2" && (
           <div>
             <h2>基本信息</h2>
-            <Form labelCol={{ span: 4 }} wrapperCol={{ span: 14 }}>
+            <Form
+              labelCol={{ span: 4 }}
+              wrapperCol={{ span: 14 }}
+            >
               <Form.Item label="年龄">
                 <Input type="number" />
               </Form.Item>
@@ -244,8 +258,52 @@ export default function TestPage() {
                 </Button>
               </Form.Item>
             </Form>
+            {
+              showComment && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    right: '-200px',
+                    width: '350px',
+                    padding: '80px 30px',
+                  }}
+                >
+                  <h3>评论</h3>
+                  <TextArea
+                    rows={8}
+                    placeholder="请输入内容" />
+                  <div style={{
+                    marginTop: '40px',
+                    display: 'flex',
+                    justifyContent: 'space-around',
+                  }}>
+                    <Button onClick={() => setShowComment(false)}>
+                      返回
+                    </Button>
+                    <Button
+                      onClick={() => setShowComment(false)}
+                      type="primary"
+                    >
+                      保存
+                    </Button>
+                  </div>
+                </div>
+              )
+            }
+            {
+              !showComment && (
+                <FloatButton
+                  icon={<FormOutlined />}
+                  style={{ top: '200px' }}
+                  onClick={() => setShowComment(true)}
+                  type="primary"
+                />
+              )
+            }
           </div>
         )}
+        {/* 任务清单 */}
         {currentStep === "3" && (
           <div>
             {contextHolder}

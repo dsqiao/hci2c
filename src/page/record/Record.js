@@ -219,7 +219,7 @@ export default function Record() {
       style={{
         display: "flex",
         flexDirection: "row",
-        padding: "0 200px 100px 200px",
+        padding: "80px 200px 100px 200px",
         gap: "50px",
       }}
     >
@@ -284,11 +284,19 @@ export default function Record() {
                 bordered
                 labelStyle={{ width: "200px" }}
               >
-                {labels.map((ele, index) => (
-                  <Descriptions.Item label={ele} key={index}>
-                    <Input style={{ border: "none" }} />
-                  </Descriptions.Item>
-                ))}
+                {
+                  labels.map((ele, index) => (
+                    <Descriptions.Item
+                      label={ele}
+                      key={index}
+                    >
+                      <Input
+                        style={{ border: "none" }}
+                        placeholder={index === 8 ? '包括语言、动作、神态的反馈' : ''}
+                      />
+                    </Descriptions.Item>
+                  ))
+                }
               </Descriptions>
               <div style={{ height: "40px" }}></div>
               <Button

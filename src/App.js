@@ -18,31 +18,53 @@ function App() {
 
       {/* 顶部导航 */}
       <div className='header'>
-        <Dropdown menu={{
-          items: [
-            {
-              key: '1',
-              label: (<div>消息</div>)
-            },
-            {
-              key: '2',
-              label: (<div>帮助中心</div>)
-            },
-            {
-              key: '3',
-              label: (
-                <div onClick={onClickLogout}>
-                  退出登录
-                </div>
-              )
+        <Dropdown menu={
+          isLogin
+            ? {
+              items: [
+                {
+                  key: '1',
+                  label: (<div>消息</div>)
+                },
+                {
+                  key: '2',
+                  label: (<div>帮助中心</div>)
+                },
+                {
+                  key: '3',
+                  label: (
+                    <div onClick={onClickLogout}>
+                      退出登录
+                    </div>
+                  )
+                }
+              ]
             }
-          ]
-        }}>
-          <div className='nav' style={{
-            marginRight: '50px',
-            display: 'flex',
-            alignItems: 'center',
-          }}>
+            : {
+              items: [
+                {
+                  key: '1',
+                  label: (
+                    <div>
+                      <a
+                        href='/#/login'
+                        style={{ color: 'black' }}
+                      >
+                        去登录
+                      </a>
+                    </div>
+                  )
+                }
+              ]
+            }}>
+          <div
+            className='nav'
+            style={{
+              marginRight: '50px',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
             <img
               src="/avator.svg"
               alt='avator'
@@ -53,11 +75,25 @@ function App() {
             <span>{username}</span>
           </div>
         </Dropdown>
-        <div className='nav'>EN</div>
-        <div className='nav'>关于</div>
-        <div className='nav'><a href='/#/login'>登陆</a></div>
-        <div className='nav'>服务</div>
-        <div className='nav'><a href="/">首页</a></div>
+        <div className='nav'>
+          EN
+        </div>
+        <div className='nav'>
+          关于
+        </div>
+        <div className='nav'>
+          <a href='/#/login'>
+            登陆
+          </a>
+        </div>
+        <div className='nav'>
+          服务
+        </div>
+        <div className='nav'>
+          <a href="/">
+            首页
+          </a>
+        </div>
       </div>
 
       {/* 主内容区 */}

@@ -145,12 +145,17 @@ export default function ApplyPage() {
       dataIndex: "operation",
       render: (_, record) =>
         dataSource.length >= 1 ? (
-          <Popconfirm
-            title="确认删除？"
-            onConfirm={() => handleDelete(record.key)}
-          >
-            <Button>删除</Button>
-          </Popconfirm>
+          <div>
+            <Checkbox>
+              是否向用户展示
+            </Checkbox>
+            <Popconfirm
+              title="确认删除？"
+              onConfirm={() => handleDelete(record.key)}
+            >
+              <Button>删除</Button>
+            </Popconfirm>
+          </div>
         ) : null,
     },
   ];
@@ -200,7 +205,7 @@ export default function ApplyPage() {
       style={{
         display: "flex",
         flexDirection: "row",
-        padding: "0 200px 100px 200px",
+        padding: "80px 200px 100px 200px",
         gap: "50px",
       }}
     >
@@ -266,28 +271,40 @@ export default function ApplyPage() {
               wrapperCol={{ span: 14 }}
             >
               <Form.Item label="目标产品">
-                <Input />
+                <Input placeholder="填写产品的名称" />
               </Form.Item>
               <Form.Item label="体验版本/型号">
-                <Input />
+                <Input placeholder="体验版本/型号" />
               </Form.Item>
               <Form.Item label="体验时间">
-                <Input />
+                <Input placeholder="预习测试周期" />
               </Form.Item>
               <Form.Item label="产品类型">
                 <Input />
               </Form.Item>
               <Form.Item label="产品描述">
-                <TextArea rows={4} />
+                <TextArea
+                  rows={4}
+                  placeholder="对产品进行简要介绍"
+                />
               </Form.Item>
               <Form.Item label="产品定位">
-                <TextArea rows={4} />
+                <TextArea
+                  rows={4}
+                  placeholder="对产品定位进行简要介绍"
+                />
               </Form.Item>
               <Form.Item label="产品特征">
-                <TextArea rows={4} />
+                <TextArea
+                  rows={4}
+                  placeholder="对产品特征进行简要介绍"
+                />
               </Form.Item>
               <Form.Item label="产品功能">
-                <TextArea rows={4} />
+                <TextArea
+                  rows={4}
+                  placeholder="对产品功能进行简要介绍"
+                />
               </Form.Item>
               <Form.Item
                 wrapperCol={{
@@ -336,6 +353,7 @@ export default function ApplyPage() {
             </Button>
           </div>
         )}
+        {/* 测评服务 */}
         {currentStep === "4" && (
           <div>
             {contextHolder}
