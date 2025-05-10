@@ -83,7 +83,7 @@ function App() {
         </div>
         <div className='nav'>
           <a href='/#/login'>
-            登陆
+            登录
           </a>
         </div>
         <div className='nav'>

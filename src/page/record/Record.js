@@ -103,16 +103,16 @@ export default function Record() {
   };
   const [dataSource, setDataSource] = useState([
     {
-      key: "0",
-      question: "问题 0",
+      key: "1",
+      question: "问题 1",
       answer: "回答",
-      desc: "说明 0",
+      desc: "说明 1",
     },
     {
-      key: "1",
-      question: "",
-      answer: "",
-      desc: "",
+      key: "2",
+      question: "问题 2",
+      answer: "回答",
+      desc: "说明 2",
     },
   ]);
   const [count, setCount] = useState(2);
@@ -156,10 +156,10 @@ export default function Record() {
   ];
   const handleAdd = () => {
     const newData = {
-      key: count,
-      question: `问题 ${count}`,
+      key: count + 1,
+      question: `问题 ${count + 1}`,
       answer: "回答",
-      desc: `说明 ${count}`,
+      desc: `说明 ${count + 1}`,
     };
     setDataSource([...dataSource, newData]);
     setCount(count + 1);

@@ -2,7 +2,7 @@
 
 本仓库为社会学院一个大创项目的C端前端。
 - [项目设计稿](https://modao.cc/app/fJZjEluirfxsobwaKlFpSa)
-- [注册、登陆体系](https://nanxiaobao.feishu.cn/docx/FKy9dRI9Zo5eecxBQencfPeBniV)
+- [注册、登录体系](https://nanxiaobao.feishu.cn/docx/FKy9dRI9Zo5eecxBQencfPeBniV)
 - [主页面&产品研究](https://nanxiaobao.feishu.cn/docx/AoRQdsahNoNEgAxWRz4caXmKnwf)
 
 本系统使用 Create React App 作为模版。
